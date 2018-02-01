@@ -1,0 +1,33 @@
+Analiză statică și dinamică
+
+Programul trebuie analizat în mod amănunțit (dar cu mai puțin accent pe detalii) prin metodele învățate în laborator. Ce se urmărește: - înțelegerea codului propriu-zis. Executabilul conține mai multe funcții și variabile globale, identificate doar prin adrese. În cadrul README-ului va trebui să faceți o descriere a acestor funcții și variabile: adresa la care se găsesc în cod, câte argumente au, tipul acestora, ce rezultat(e) întorc, ce nume le-ați atribui, unde sunt folosite, la ce sunt folosite, precum și o descriere de nivel înalt a codului (respectiv, să vă gândiți cum ați scrie într-un pseudocod simplificat, sau cum ați descrie foarte sumar esențialul).
+
+Spre exemplu:
+
+.text:00402510 sub_402510      proc near
+.text:00402510                 push    ebp
+.text:00402511                 mov     ebp, esp
+.text:00402513                 push    ecx
+.text:00402514                 push    edi
+.text:00402515                 mov     edi, [ebp+8]
+.text:00402518                 or      ecx, 0FFFFFFFFh
+.text:0040251B                 xor     eax, eax
+.text:0040251D                 repne scasb
+.text:0040251F                 not     ecx
+.text:00402521                 add     ecx, 0FFFFFFFFh
+.text:00402524                 cmp     ecx, 4
+.text:00402527                 jz      short loc_40252D
+.text:00402529                 xor     eax, eax
+.text:0040252B                 jmp     short loc_4025A0
+...
+
+Descriere de nivel scăzut: funcția salvează vechiului ebp pe stivă, apoi se actualizează valoarea la vârful curent al stivei. Apoi se salvează pe stivă regiștrii ecx și edi etc.
+
+Descriere de nivel înalt: funcția are un singur argument, o adresă a unui șir. Se verifică dacă lungimea șirului este 4.
+
+Tema urmărește înțelegerea codului într-un sens mai abstract; drept urmare, nu prezintă interes dacă un registru se inițializează la valoarea 0 prin mov eax, 0 sau xor eax, eax.
+
+Toate aceste lucruri trebuie documentate în README.
+
+În cadrul punctajului acestei părți intră opțiunea ”0” din binar, în care trebuie să găsiți un serial key valid. Pentru aceasta, trebuie să înțelegeți în ce constă codul de verificare și ce condiții trebuie să valideze serial key-ul.
+
